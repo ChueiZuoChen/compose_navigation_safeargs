@@ -1,1 +1,5 @@
-1. 傳變數前要先把Routes包起來 包含你要接收的變數
+- branch
+- [primitive_type] 
+- 一般的Kotlin原始型態參數
+- [customer_type]
+- 客製化的Model
