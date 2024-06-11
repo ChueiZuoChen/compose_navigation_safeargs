@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import kotlin.reflect.typeOf
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Composable
 fun MyNavHost(
@@ -35,7 +35,9 @@ fun MyNavHost(
                 }
             )
         }
-        composable<Routes.SecondScreen> {
+        composable<Routes.SecondScreen>(
+            typeMap = mapOf(typeOf<MyCustomModel>() to CustomNavType(MyCustomModel::class.java, MyCustomModel.serializer()))
+        ) {
             val args = it.toRoute<Routes.SecondScreen>()
             SecondScreen(
                 args = args,
