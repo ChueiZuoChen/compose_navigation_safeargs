@@ -8,7 +8,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlin.random.Random
 
 @Composable
 fun FirstScreen(onNavigateForward: (Routes.SecondScreen) -> Unit) {
@@ -20,7 +19,7 @@ fun FirstScreen(onNavigateForward: (Routes.SecondScreen) -> Unit) {
         Text(text = "First Screen")
         Button(onClick = {
             onNavigateForward(
-                Routes.SecondScreen("Potti", age = Random.nextInt())
+                Routes.SecondScreen(MyCustomModel("Potti", id = 22))
             )
         }) {
             Text(text = "Go to Second Screen")
@@ -31,7 +30,6 @@ fun FirstScreen(onNavigateForward: (Routes.SecondScreen) -> Unit) {
 
 @Composable
 fun SecondScreen(args: Routes.SecondScreen, onNavigateBack: () -> Unit) {
-
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
